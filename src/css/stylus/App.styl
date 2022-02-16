@@ -1,0 +1,58 @@
+flexbox(direction, justifyContent, alignItems)
+  display: flex
+  flex-direction: direction
+  justify-content: justifyContent
+  align-items: alignItems
+
+centerChild()
+  display: flex
+  justify-content: center
+  align-items: center
+
+tblr(top=0, bottom=0, left=0, right=0)
+  top top
+  bottom bottom
+  left left
+  right right
+
+.App 
+  flexbox(row, flex-start, flex-start)
+
+.main
+  width 100%
+
+.nav__backdrop
+  position absolute
+  tblr()
+  background-color #eeeeee88
+
+.nav
+  flexbox(column,flex-start, flex-end)
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  background-color #fff
+  border 1px solid #000
+
+.nav__ul
+  flexbox(column, space-between, center)
+  width 100px
+
+.nav__li
+  user-select: none
+  cursor pointer
+  centerChild()
+  width 80px
+  height: 50px
+  border 1px solid #000
+  margin-bottom 8px
+  
+.nav__button
+  cursor pointer
+  position absolute
+  tblr(null, 20px, 140px, null)
+  border 1px solid #000
+  border-radius: 100px
+  width 50px
+  height 50px

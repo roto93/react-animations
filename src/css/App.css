@@ -4,6 +4,29 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.main {
+  width: 100%;
+}
+.nav__backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(238,238,238,0.533);
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #000;
+}
 .nav__ul {
   display: flex;
   flex-direction: column;
@@ -12,6 +35,8 @@
   width: 100px;
 }
 .nav__li {
+  user-select: none;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,4 +44,16 @@
   height: 50px;
   border: 1px solid #000;
   margin-bottom: 8px;
+}
+.nav__button {
+  cursor: pointer;
+  position: absolute;
+  top: ;
+  bottom: 20px;
+  left: 140px;
+  right: ;
+  border: 1px solid #000;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
 }
