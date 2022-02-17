@@ -17,42 +17,75 @@ tblr(top=0, bottom=0, left=0, right=0)
 
 .App 
   flexbox(row, flex-start, flex-start)
+  position relative
+  width 100%
+  min-height: 100vh
 
 .main
+  position relative
   width 100%
+  min-height: 100vh
+
+.header {}
+
+.header__container
+  // border 1px solid #000
+  width 80%
+  max-width: 800px
+  margin 0 auto
+
+.header__title
+  margin 1em 0 1em 2em
 
 .nav__backdrop
   position absolute
   tblr()
-  background-color #eeeeee88
 
 .nav
-  flexbox(column,flex-start, flex-end)
+  flexbox(column, center, center)
   position absolute
-  top 0
-  bottom 0
-  left 0
-  background-color #fff
-  border 1px solid #000
+  transform translate(50%,-50%)
+  width 400px
+  height 400px
+  box-shadow: 0 0 4px #ccc
+  overflow hidden
+  border-radius: 24px
+  border 1px solid #eeffee
+  background-color #f9fff9
+  transition background-color 0.5s
+
+  &.hide
+    border 0px solid #eeffee
+    background-color #eeffee
 
 .nav__ul
   flexbox(column, space-between, center)
-  width 100px
+  transition: opacity 0.6s ease-in-out
+  &.hide
+    opacity:0
+    z-index -1
 
 .nav__li
   user-select: none
   cursor pointer
   centerChild()
-  width 80px
+  width 150px
   height: 50px
-  border 1px solid #000
-  margin-bottom 8px
-  
-.nav__button
+  border-radius: 8px
+  &+&
+    margin-top: 8px
+
+.nav__menuIcon
+  user-select: none
   cursor pointer
   position absolute
-  tblr(null, 20px, 140px, null)
-  border 1px solid #000
-  border-radius: 100px
-  width 50px
-  height 50px
+  top 50%
+  left 50%
+  transform translate(-50%,-50%)
+  transition: opacity 0.6s ease-in-out
+  width 48px
+  height 48px
+  centerChild()
+  &.hide
+    opacity:0
+    z-index -1

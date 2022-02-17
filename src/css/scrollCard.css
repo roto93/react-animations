@@ -2,12 +2,43 @@
   width: 800px;
   max-width: 90%;
   margin: 0 auto;
-  border: 1px solid #000;
 }
 .scrollCard__header {
   width: 100%;
+  margin-bottom: 40px;
 }
 .scrollCard__title {
   text-align: center;
-  margin: 0.5em 0;
+  margin: 1em 0 0 0;
+}
+.scrollCard__banner {
+  display: flex;
+  background-color: #add8e6;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px #fff, 0 0 10px #add8e6;
+}
+.scrollCard__cardContainer {
+  display: flex;
+  padding: 1.5em 2em;
+  cursor: grab;
+}
+.scrollCard__cardContainer.grabbing {
+  cursor: grabbing;
+}
+.scrollCard__card {
+  cursor: pointer;
+  min-width: 200px;
+  height: 300px;
+  border-radius: 16px;
+  box-shadow: 2px 2px 4px rgba(51,51,51,0.533);
+  overflow: hidden;
+}
+.scrollCard__card+.scrollCard__card {
+  margin-left: 16px;
+}
+.scrollCard__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

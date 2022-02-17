@@ -6,12 +6,13 @@ import Page1 from './routes/Page1';
 import Page2 from './routes/Page2';
 import Page3 from './routes/Page3';
 import Page4 from './routes/Page4';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <main className='main' onClick={() => { console.log(1234) }}>
-        <Nav />
+      <main className='main' >
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/1' element={<Page1 />} />
@@ -20,6 +21,7 @@ function App() {
           <Route path='/4' element={<Page4 />} />
         </Routes>
       </main>
+      <Nav />
     </div>
   );
 }
