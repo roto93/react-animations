@@ -13,12 +13,15 @@
   min-height: 100vh;
 }
 .header__container {
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   margin: 0 auto;
 }
 .header__title {
-  margin: 1em 0 1em 2em;
+  margin: 1.5em 0;
+}
+.header__title__h2 {
+  font-family: 'Inder';
 }
 .nav__backdrop {
   position: absolute;
@@ -26,6 +29,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: rgba(51,51,51,0.314);
 }
 .nav {
   display: flex;
@@ -86,6 +90,7 @@
   align-items: center;
 }
 .nav__menuIcon.hide {
+  transition: opacity 0.3s ease-in-out;
   opacity: 0;
   z-index: -1;
 }

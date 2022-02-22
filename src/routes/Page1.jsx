@@ -7,11 +7,22 @@ const Page1 = () => {
   const sliderRef = useRef()
   const [isDragging, setIsDragging] = useState(false);
 
+  const cardVariants = (order) => ({
+    hidden: {
+      opacity: 0,
+      y: -40
+    },
+    visible: {
+      transition: { opacity: { duration: 1, delay: order * 0.2 } },
+      opacity: 1,
+      y: 0
+    }
+  })
 
   return (
     <div className="scrollCard__container">
       <div className="scrollCard__header">
-        <h2 className='scrollCard__title'>Scroll Card</h2>
+        <h1 className='scrollCard__title'>Scroll Card</h1>
       </div>
 
       <motion.div className="scrollCard__banner" ref={bannerRef}>
@@ -33,6 +44,10 @@ const Page1 = () => {
             <motion.li
               key={index}
               className={'scrollCard__card'}
+              variants={cardVariants(item)}
+              initial={'hidden'}
+              animate={'visible'}
+              exit={null}
               whileHover={{ y: -5 }}
               whileTap={{ scale: isDragging ? 1 : 0.97 }}
               whileDrag={{ cursor: 'grabbing' }}
@@ -50,6 +65,13 @@ const Page1 = () => {
       </motion.div>
 
       <div className="scrollCard__description">
+        <h3 className="scrollCard__section__title">
+          Animate-in sequentially
+        </h3>
+        <p className="scrollCard__section__content">
+          <code>{"body { color: blue; }"}</code>
+        </p>
+
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MenuIcon from '../../icons/MenuIcon'
@@ -8,7 +8,17 @@ const Nav = () => {
   const NavOption = { showNav, setShowNav }
   return (
     <>
-      {showNav && <motion.div className="nav__backdrop" onClick={() => { setShowNav(false) }} />}
+      <AnimatePresence>
+        {
+          showNav && <motion.div
+            className="nav__backdrop"
+            onClick={() => { setShowNav(false) }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+        }
+      </AnimatePresence>
 
       <motion.nav
         className={`nav ${showNav ? '' : 'hide'}`}
@@ -19,7 +29,7 @@ const Nav = () => {
           width: !showNav ? '50px' : '400px',
           height: !showNav ? '50px' : '400px'
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ type: 'spring', stiffness: 130, damping: 19, duration: 0.2 }}
         onClick={() => { setShowNav(true) }}>
         <ul className={`nav__ul ${showNav ? '' : 'hide'}`}>
           <NavButton NavOption={NavOption} pageIndex={'1'} />
@@ -27,7 +37,12 @@ const Nav = () => {
           <NavButton NavOption={NavOption} pageIndex={'3'} />
           <NavButton NavOption={NavOption} pageIndex={'4'} />
         </ul>
-        <motion.div initial={false} className={`nav__menuIcon ${showNav ? 'hide' : ''}`} animate={{ x: '-50%', y: '-50%' }} whileHover={{ rotate: 180 }}>
+        <motion.div
+          initial={false}
+          className={`nav__menuIcon ${showNav ? 'hide' : ''}`}
+          animate={{ x: '-50%', y: '-50%' }}
+          whileHover={{ rotate: 180 }}
+        >
           <MenuIcon />
         </motion.div>
       </motion.nav>
@@ -38,11 +53,13 @@ const Nav = () => {
 export default Nav
 
 const NavButton = ({ NavOption, pageIndex }) => {
+
   const { setShowNav } = NavOption
   const navigate = useNavigate()
-  const navigateTo = (path) => () => {
-    navigate(path)
+  const navigateTo = (path) => (e) => {
+    e.stopPropagation()
     setShowNav(false)
+    navigate(path)
   }
   const getText = () => {
     switch (pageIndex) {
@@ -59,7 +76,9 @@ const NavButton = ({ NavOption, pageIndex }) => {
       whileTap={{ scale: 0.95, transition: { duration: 0 } }}
       onClick={navigateTo(`/${pageIndex}`)}
     >
-      {getText(pageIndex)}
+      <h3>
+        {getText(pageIndex)}
+      </h3>
     </motion.li>
   )
 

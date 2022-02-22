@@ -30,16 +30,20 @@ tblr(top=0, bottom=0, left=0, right=0)
 
 .header__container
   // border 1px solid #000
-  width 80%
+  width 90%
   max-width: 800px
   margin 0 auto
 
 .header__title
-  margin 1em 0 1em 2em
+  margin 1.5em 0 
+
+.header__title__h2
+  font-family 'Inder'
 
 .nav__backdrop
   position absolute
   tblr()
+  background-color #33333350
 
 .nav
   flexbox(column, center, center)
@@ -87,5 +91,6 @@ tblr(top=0, bottom=0, left=0, right=0)
   height 48px
   centerChild()
   &.hide
+    transition: opacity 0.3s ease-in-out
     opacity:0
     z-index -1
