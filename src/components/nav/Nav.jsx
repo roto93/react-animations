@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useWinSize } from '../../hooks/useWinSize'
 import MenuIcon from '../../icons/MenuIcon'

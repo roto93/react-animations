@@ -11,7 +11,7 @@
   margin-top: 68px;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: cal(32vh);
 }
 .header {
   display: flex;

@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import '../css/scrollCard.css'
-import { CodeBlock, nord } from "react-code-blocks";
 
 
-const Page1 = () => {
-  const bannerRef = useRef()
-  const sliderRef = useRef()
+const ScrollCardPage = () => {
+  const bannerRef = useRef(0)
+  const sliderRef = useRef(0)
   const [isDragging, setIsDragging] = useState(false);
+  const [sliderConstraint, setSliderConstraint] = useState(0);
 
   const cardVariants = (order) => ({
     hidden: {
@@ -21,6 +21,20 @@ const Page1 = () => {
     }
   })
 
+  useEffect(() => {
+    const handleResize = () => {
+      const constraint = bannerRef.current.offsetWidth - sliderRef.current.offsetWidth
+      setSliderConstraint(constraint)
+    }
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   return (
     <div className="scrollCard__container">
       <div className="scrollCard__header">
@@ -33,7 +47,7 @@ const Page1 = () => {
           whileTap={{ cursor: 'grabbing' }}
           className={`scrollCard__cardContainer`}
           drag={'x'}
-          dragConstraints={{ left: -760, right: 0 }}
+          dragConstraints={{ left: sliderConstraint, right: 0 }}
           dragTransition={{ power: 0.2, timeConstant: 200, }}
           onDragStart={() => { setIsDragging(true) }}
           onDragEnd={() => {
@@ -80,4 +94,4 @@ const Page1 = () => {
   )
 }
 
-export default Page1
+export default ScrollCardPage
