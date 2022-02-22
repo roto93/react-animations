@@ -1,25 +1,34 @@
 .App {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   position: relative;
   width: 100%;
   min-height: 100vh;
 }
 .main {
+  margin-top: 68px;
   position: relative;
   width: 100%;
   min-height: 100vh;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: #bec5ad;
+  width: 100%;
+  height: 68px;
 }
 .header__container {
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
 }
-.header__title {
-  margin: 1.5em 0;
-}
+.header__title,
 .header__title__h2 {
   font-family: 'Inder';
 }
@@ -36,19 +45,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   transform: translate(50%, -50%);
   width: 400px;
   height: 400px;
   box-shadow: 0 0 4px #ccc;
   overflow: hidden;
   border-radius: 24px;
-  border: 1px solid #efe;
   background-color: #f9fff9;
   transition: background-color 0.5s;
 }
 .nav.hide {
-  border: 0px solid #efe;
   background-color: #efe;
 }
 .nav__ul {
@@ -65,15 +72,46 @@
 .nav__li {
   user-select: none;
   cursor: pointer;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
   height: 50px;
   border-radius: 8px;
+  font-family: "Inder";
+  transition: color 0.2s;
 }
 .nav__li+.nav__li {
   margin-top: 8px;
+}
+.nav__li:hover {
+  color: #fff;
+}
+.nav__li::before,
+.nav__li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(30deg, #a4b494, #bec5ad);
+  z-index: -1;
+  transform: translate(-5px, 0) skewX(-15deg);
+  opacity: 0;
+  transition: 0.2s transform, opacity 0.5s;
+}
+.nav__li::after {
+  z-index: -2;
+  transform: translate(-5px, 0px) skewX(-15deg);
+  background: linear-gradient(30deg, #bec5ad, #a4b494);
+}
+.nav__li:hover::before {
+  transform: translate(0px, 0) skewX(-15deg);
+  opacity: 1;
+}
+.nav__li:hover::after {
+  transform: translate(5px, 3px) skewX(-15deg);
+  opacity: 1;
 }
 .nav__menuIcon {
   user-select: none;

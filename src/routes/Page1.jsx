@@ -1,6 +1,8 @@
-import { motion, AnimateSharedLayout } from 'framer-motion'
+import { motion } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import '../css/scrollCard.css'
+import { CodeBlock, nord } from "react-code-blocks";
+
 
 const Page1 = () => {
   const bannerRef = useRef()
@@ -65,11 +67,12 @@ const Page1 = () => {
       </motion.div>
 
       <div className="scrollCard__description">
-        <h3 className="scrollCard__section__title">
-          Animate-in sequentially
-        </h3>
+        <h2 className="scrollCard__section__title">
+          ✔️ Fade in sequentially <br />
+          ✔️ Draggable slider
+        </h2>
         <p className="scrollCard__section__content">
-          <code>{"body { color: blue; }"}</code>
+
         </p>
 
       </div>

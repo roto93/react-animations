@@ -1,11 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useWinSize } from '../../hooks/useWinSize'
 import MenuIcon from '../../icons/MenuIcon'
 
 const Nav = () => {
   const [showNav, setShowNav] = useState(false);
   const NavOption = { showNav, setShowNav }
+
+  const { winX, winY } = useWinSize()
   return (
     <>
       <AnimatePresence>
@@ -24,8 +27,8 @@ const Nav = () => {
         className={`nav ${showNav ? '' : 'hide'}`}
         initial={false}
         animate={{
-          top: !showNav ? '5%' : '50%',
-          right: !showNav ? '5%' : '50%',
+          top: !showNav ? '68px' : (winY / 2) + 'px',
+          right: !showNav ? '50px' : (winX / 2) + 'px',
           width: !showNav ? '50px' : '400px',
           height: !showNav ? '50px' : '400px'
         }}
@@ -65,14 +68,14 @@ const NavButton = ({ NavOption, pageIndex }) => {
     switch (pageIndex) {
       case '1':
         return 'Scroll Card'
-      default: return pageIndex
+      default: return 'Something Else'
     }
   }
   return (
     <motion.li
       className="nav__li"
       animate={{ x: 0 }}
-      whileHover={{ x: 5, transition: { duration: 0.2 } }}
+      whileHover={{ x: 3, transition: { duration: 0.2 } }}
       whileTap={{ scale: 0.95, transition: { duration: 0 } }}
       onClick={navigateTo(`/${pageIndex}`)}
     >
