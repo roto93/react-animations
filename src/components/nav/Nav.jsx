@@ -68,6 +68,8 @@ const NavButton = ({ NavOption, pageIndex }) => {
     switch (pageIndex) {
       case '1':
         return 'Scroll Card'
+      case '2':
+        return 'Shared Animation'
       default: return 'Something Else'
     }
   }

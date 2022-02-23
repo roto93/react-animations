@@ -7,12 +7,14 @@ import Page2 from './routes/Page2';
 import Page3 from './routes/Page3';
 import Page4 from './routes/Page4';
 import Header from './components/Header';
+import { useWinSize } from './hooks/useWinSize';
 
 function App() {
+  const { winY } = useWinSize()
   return (
     <div className="App">
-      <Header />
       <main className='main' >
+        {/* <div style={{ border: '1px solid black', width: '100%', minHeight: '100%' }}></div> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/1' element={<ScrollCardPage />} />
@@ -21,6 +23,7 @@ function App() {
           <Route path='/4' element={<Page4 />} />
         </Routes>
       </main>
+      <Header />
       <Nav />
     </div>
   );
