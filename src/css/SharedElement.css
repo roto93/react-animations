@@ -47,8 +47,13 @@
   border-radius: 8px;
 }
 .sharedElement__section {
-  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  padding: 0.5em 0.25em;
   margin: 2em 1em;
+  border-radius: 8px;
 }
 .sharedElement__toggleButton {
   user-select: none;

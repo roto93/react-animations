@@ -74,11 +74,19 @@ const SharedElementPage = () => {
       <div className="container">
 
         <p className='sharedElement__p'>所有要做 layout animation 的元件都必須用 AnimateSharedLayout 包起來</p>
-        <CodeBlock
-          text={code1}
-          language={'jsx'}
-          style={{ textAlign: 'start' }}
-        />
+        <p className='sharedElement__p'>
+          原本當第三個 section 出現或消失的時候，它的父元件都會瞬間變動<br />
+          但只要將這些元件都加上layout屬性(4, 5, 8, 13)，並用AnimateSharedLayout包起來(3, 22)<br />
+          被包起來的元件就會在版面變化時通知其他元件，讓他們知道該產生動畫了<br />
+          而這些動畫都會自動計算! 超讚
+        </p>
+        <div style={{ margin: "2em 0" }}>
+          <CodeBlock
+            text={code1}
+            language={'jsx'}
+            style={{ textAlign: 'start' }}
+          />
+        </div>
       </div>
     </div>
   )
