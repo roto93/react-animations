@@ -5,10 +5,8 @@ import '../css/SharedElement.css'
 
 const SharedElementPage = () => {
   const [on, setOn] = useState(true);
-  const [sectionHeight, setSectionHeight] = useState(40);
 
   const toggleSection = () => {
-    // setSectionHeight(sectionHeight === 40 ? 400 : 40)
     setOn(prev => !prev)
   }
   return (
@@ -26,7 +24,7 @@ const SharedElementPage = () => {
         <h3 className="sharedElement__subtitle">with layout property</h3>
         <AnimateSharedLayout>
           <motion.div layout className="sharedElement__box" style={{ flexDirection: on ? 'column' : 'column' }}>
-            <motion.div layout className="sharedElement__section" animate={{ height: sectionHeight }}>
+            <motion.div layout className="sharedElement__section" >
               section1
             </motion.div>
             <motion.div layout className="sharedElement__section">
@@ -55,7 +53,7 @@ const SharedElementPage = () => {
       <div className="sharedElement__container">
         <h3 className="sharedElement__subtitle">without layout property</h3>
         <motion.div className="sharedElement__box" style={{ flexDirection: on ? 'column' : 'column' }}>
-          <motion.div className="sharedElement__section" animate={{ height: sectionHeight }}>
+          <motion.div className="sharedElement__section" >
             section1
           </motion.div>
           <motion.div className="sharedElement__section">
