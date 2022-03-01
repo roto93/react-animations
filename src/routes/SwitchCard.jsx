@@ -1,23 +1,34 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import React, { useState } from 'react'
 import '../css/switchCard.css'
 
 const SwitchCard = () => {
   const [id, setId] = useState('0');
-
+  const cardVariants = {
+    hidden: { x: 0, opacity: 0, scale: 1.2, position: 'absolute' },
+    visible: { x: 0, opacity: 1, scale: 1, transition: { delay: 0.2 } },
+    exit: { x: Math.random() > 0.5 ? 50 : -50, opacity: 0 },
+  }
   const renderCard = (item) => {
+
     if (item.id !== id) return
     return (
       <motion.div
         key={item.id}
         className="switchCard__card"
-        animate={{ scale: 0.9 }}
+        variants={cardVariants}
+        initial={'hidden'}
+        animate={'visible'}
+        exit={'exit'}
+        transition={{ scale: 0.3 }}
       >
-        <div className="switchCard__card__imgContainer" style={{ backgroundImage: `url(${item.url})`, backgroundSize: 'contain' }}>
+        <div className="switchCard__card__imgContainer" style={{ backgroundImage: `url(${item.url})` }}>
           {/* <img className="switchCard__card__img" alt={'pic of someone'} src={item.url}></img> */}
         </div>
-        <p className="switchCard__card__name">Hi, I'm {item.name}</p>
-        <p className="switchCard__card__description">{item.description}</p>
+        <div>
+          <p className="switchCard__card__name">Hi, I'm {item.name}</p>
+          <p className="switchCard__card__description">{item.description}</p>
+        </div>
       </motion.div>
     )
   }
@@ -27,7 +38,9 @@ const SwitchCard = () => {
       <div className="switchCard__demo">
         <div className="container switchCard__container">
           <div className="switchCard__cardContainer">
-            {cardData.map(renderCard)}
+            <AnimatePresence>
+              {cardData.map(renderCard)}
+            </AnimatePresence>
           </div>
           <motion.div
             className="switchCard__switchButton"
@@ -66,7 +79,7 @@ const cardData = [
   },
   {
     id: '3',
-    name: 'carissa',
+    name: 'Carissa',
     url: 'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dicta ad suscipit sed, eligendi odit beatae deserunt est dolores mollitia.'
   },

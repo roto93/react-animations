@@ -7,34 +7,48 @@
 .switchCard__demo
   flexbox(row, center, center)
   width 100%
-  height calc(100vh - 68px)
+  height:700px
+  min-height calc(100vh - 68px)
   background linear-gradient(90deg,#67B26F,#4ca2cd)
+  position relative
 
 .switchCard__container
-  flexbox(column, center, center)
+  flexbox(column, flex-start, center)
+  border 1px solid #000
+  height 80%
+  min-height: 600px
 
 .switchCard__cardContainer
-  flexbox(column, flex-start, center)
+  flexbox(column, center, center)
+  flex-grow: 1
   // border 1px solid #000
   width 100%
-  margin 3em
+  margin 1em auto
+  position relative
 
 .switchCard__card
+  flexbox(column, center, center)
   background linear-gradient(135deg, #eeeeee88,#aaaaaa88,#ffffff88)
   width 90%
-  max-width: 500px
-  height 650px
+  max-width: 450px
+  height 80%
+  max-height: 600px
   border-radius 16px
   box-shadow: 2px 2px 10px #555
+  padding 1em 0
+  // position absolute
 
 .switchCard__card__imgContainer
-  width 100%
-  aspect-ratio: 1
   flexbox(column, flex-start, center)
-  margin 1.5em 0
+  width 90%
+  height 100%
+  // aspect-ratio: 1
+  margin 1.5em
+  margin-bottom 1em
   background-position: center center
   background-size: contain
   background-repeat: no-repeat
+  border-radius 16px
 
 .switchCard__card__img
   // width 100%
@@ -44,7 +58,7 @@
 .switchCard__card__name
 .switchCard__card__description
   text-align: center
-  margin 1em 2em
+  margin 1em 3em
 
 .switchCard__switchButton
   user-select: none
@@ -54,5 +68,8 @@
   font-weight 700
   opacity 1
   text-transform: uppercase
+  margin-bottom 2em
+  // position absolute
+  // bottom 50px
   &:active
     opacity 0.5
