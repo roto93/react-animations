@@ -21,6 +21,11 @@ const SwitchCard = () => {
         animate={'visible'}
         exit={'exit'}
         transition={{ scale: 0.3 }}
+        drag
+        onDragEnd={(evt, info) => console.log(info)}
+        dragConstraints={{ left: -20, right: 20, top: 0, bottom: 0 }}
+        whileHover={{ cursor: 'grab' }}
+        whileTap={{ cursor: 'grabbing', scale: 1.05 }}
       >
         <div className="switchCard__card__imgContainer" style={{ backgroundImage: `url(${item.url})` }}>
           {/* <img className="switchCard__card__img" alt={'pic of someone'} src={item.url}></img> */}

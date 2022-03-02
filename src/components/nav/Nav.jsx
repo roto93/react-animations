@@ -35,6 +35,7 @@ const Nav = () => {
         transition={{ type: 'spring', stiffness: 130, damping: 19, duration: 0.2 }}
         onClick={() => { setShowNav(true) }}>
         <ul className={`nav__ul ${showNav ? '' : 'hide'}`}>
+          <NavButton NavOption={NavOption} pageIndex={''} />
           <NavButton NavOption={NavOption} pageIndex={'1'} />
           <NavButton NavOption={NavOption} pageIndex={'2'} />
           <NavButton NavOption={NavOption} pageIndex={'3'} />
@@ -66,6 +67,8 @@ const NavButton = ({ NavOption, pageIndex }) => {
   }
   const getText = () => {
     switch (pageIndex) {
+      case '':
+        return 'Home'
       case '1':
         return 'Scroll Card'
       case '2':
